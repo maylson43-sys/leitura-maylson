@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Carl & Co Select</title>
-
 <style>
 body {
     margin: 0;
@@ -17,7 +16,6 @@ body {
     display: grid;
     grid-template-columns: 220px 1fr;
     min-height: 100vh;
-    transition: all 0.3s;
 }
 
 /* MENU */
@@ -73,18 +71,11 @@ body {
     margin-bottom: 20px;
 }
 
-.search {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
-
 .search input {
     padding: 8px 12px;
     width: 220px;
     border-radius: 6px;
     border: 1px solid #ccc;
-    transition: border 0.2s;
 }
 
 .search input:focus {
@@ -92,7 +83,7 @@ body {
     outline: none;
 }
 
-.search button {
+.search button, .user button {
     padding: 8px 16px;
     background: #1a73e8;
     border: none;
@@ -102,7 +93,7 @@ body {
     transition: background 0.2s;
 }
 
-.search button:hover {
+.search button:hover, .user button:hover {
     background: #155bb5;
 }
 
@@ -111,23 +102,9 @@ body {
     color: #0a3d91;
 }
 
-.user button {
-    padding: 8px 16px;
-    background: #1a73e8;
-    border: none;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.user button:hover {
-    background: #155bb5;
-}
-
 /* BANNER */
 .banner {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
@@ -139,27 +116,32 @@ body {
     object-fit: cover;
 }
 
-/* SEÇÕES */
-.products h2 {
-    margin-top: 30px;
-    margin-bottom: 10px;
+/* SEÇÕES VERTICAIS */
+.section {
+    margin-bottom: 50px;
+}
+
+.section h2 {
+    margin-bottom: 20px;
     color: #0a3d91;
     border-bottom: 2px solid #1a73e8;
     display: inline-block;
     padding-bottom: 4px;
 }
 
-/* PRODUTOS */
+/* GRID DE PRODUTOS POR SEÇÃO */
 .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 16px;
 }
 
+/* PRODUTOS */
 .product {
     background: white;
     border-radius: 12px;
     padding: 12px;
+    width: 180px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
@@ -203,7 +185,6 @@ body {
     color: white;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
 .buy:hover {
@@ -214,10 +195,8 @@ body {
 #overlay {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background: rgba(0,0,0,0.5);
     z-index: 998;
 }
@@ -229,8 +208,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     position: fixed;
-    top: 35%;
-    left: 50%;
+    top: 35%; left: 50%;
     transform: translate(-50%, -35%);
     width: 300px;
     z-index: 999;
@@ -248,7 +226,6 @@ body {
     margin: 6px 0;
     border-radius: 6px;
     border: 1px solid #ccc;
-    transition: border 0.2s;
 }
 
 .login-box input:focus {
@@ -290,6 +267,9 @@ body {
     .menu {
         display: none;
     }
+    .products {
+        justify-content: center;
+    }
 }
 </style>
 </head>
@@ -303,7 +283,6 @@ body {
         <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" alt="Logo">
         <span>Carl & Co Select</span>
     </div>
-
     <a href="#">Início</a>
     <a href="#">Eletrônicos</a>
     <a href="#">Acessórios</a>
@@ -318,89 +297,96 @@ body {
         <input type="text" id="search" placeholder="Buscar produtos...">
         <button onclick="buscar()">Buscar</button>
     </div>
-
     <div class="user" id="userArea">
         <button onclick="abrirLogin()">Entrar / Criar conta</button>
     </div>
 </div>
 
-<!-- BANNER ANIMADO COM VÁRIOS PRODUTOS -->
+<!-- BANNER -->
 <div class="banner">
-    <img src="https://media.giphy.com/media/3o7TKM6N7cQtO4dKZC/giphy.gif" alt="Banner Marketplace Produtos">
+    <img src="https://media.giphy.com/media/3o7TKM6N7cQtO4dKZC/giphy.gif" alt="Banner Produtos">
 </div>
 
-<!-- PRODUTOS POR SEÇÃO -->
-<div class="products">
-
-<h2>Eletrônicos</h2>
-<div class="product">
-    <h3>Smartphone</h3>
-    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Smartphone">
-    <p class="price">R$ 1.499,90</p>
-    <p class="installment">12x de R$ 124,99</p>
-    <button class="buy" onclick="comprar('Smartphone')">Comprar</button>
-</div>
-<div class="product">
-    <h3>Tablet</h3>
-    <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" alt="Tablet">
-    <p class="price">R$ 799,90</p>
-    <p class="installment">8x de R$ 99,99</p>
-    <button class="buy" onclick="comprar('Tablet')">Comprar</button>
-</div>
-<div class="product">
-    <h3>Câmera de Ação</h3>
-    <img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" alt="Câmera de Ação">
-    <p class="price">R$ 299,90</p>
-    <p class="installment">6x de R$ 49,98</p>
-    <button class="buy" onclick="comprar('Câmera de Ação')">Comprar</button>
-</div>
-
-<h2>Acessórios</h2>
-<div class="product">
-    <h3>Fone Bluetooth</h3>
-    <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif" alt="Fone Bluetooth">
-    <p class="price">R$ 99,90</p>
-    <p class="installment">3x de R$ 33,30</p>
-    <button class="buy" onclick="comprar('Fone Bluetooth')">Comprar</button>
-</div>
-<div class="product">
-    <h3>Mouse Gamer</h3>
-    <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif" alt="Mouse Gamer">
-    <p class="price">R$ 89,90</p>
-    <p class="installment">2x de R$ 44,95</p>
-    <button class="buy" onclick="comprar('Mouse Gamer')">Comprar</button>
-</div>
-<div class="product">
-    <h3>Teclado Gamer</h3>
-    <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" alt="Teclado Gamer">
-    <p class="price">R$ 129,90</p>
-    <p class="installment">3x de R$ 43,30</p>
-    <button class="buy" onclick="comprar('Teclado Gamer')">Comprar</button>
+<!-- SEÇÕES VERTICAIS COM PRODUTOS -->
+<div class="section">
+    <h2>Eletrônicos</h2>
+    <div class="products">
+        <div class="product">
+            <h3>Smartphone</h3>
+            <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Smartphone">
+            <p class="price">R$ 1.499,90</p>
+            <p class="installment">12x de R$ 124,99</p>
+            <button class="buy" onclick="comprar('Smartphone')">Comprar</button>
+        </div>
+        <div class="product">
+            <h3>Tablet</h3>
+            <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" alt="Tablet">
+            <p class="price">R$ 799,90</p>
+            <p class="installment">8x de R$ 99,99</p>
+            <button class="buy" onclick="comprar('Tablet')">Comprar</button>
+        </div>
+        <div class="product">
+            <h3>Câmera de Ação</h3>
+            <img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" alt="Câmera de Ação">
+            <p class="price">R$ 299,90</p>
+            <p class="installment">6x de R$ 49,98</p>
+            <button class="buy" onclick="comprar('Câmera de Ação')">Comprar</button>
+        </div>
+    </div>
 </div>
 
-<h2>Gadgets & Carregadores</h2>
-<div class="product">
-    <h3>Power Bank</h3>
-    <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" alt="Power Bank">
-    <p class="price">R$ 119,90</p>
-    <p class="installment">3x de R$ 39,97</p>
-    <button class="buy" onclick="comprar('Power Bank')">Comprar</button>
-</div>
-<div class="product">
-    <h3>Fone de Ouvido Gamer</h3>
-    <img src="https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif" alt="Fone Gamer">
-    <p class="price">R$ 149,90</p>
-    <p class="installment">3x de R$ 49,97</p>
-    <button class="buy" onclick="comprar('Fone de Ouvido Gamer')">Comprar</button>
-</div>
-<div class="product">
-    <h3>Carregador Rápido</h3>
-    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Carregador">
-    <p class="price">R$ 59,90</p>
-    <p class="installment">2x de R$ 29,95</p>
-    <button class="buy" onclick="comprar('Carregador Rápido')">Comprar</button>
+<div class="section">
+    <h2>Acessórios</h2>
+    <div class="products">
+        <div class="product">
+            <h3>Fone Bluetooth</h3>
+            <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif" alt="Fone Bluetooth">
+            <p class="price">R$ 99,90</p>
+            <p class="installment">3x de R$ 33,30</p>
+            <button class="buy" onclick="comprar('Fone Bluetooth')">Comprar</button>
+        </div>
+        <div class="product">
+            <h3>Mouse Gamer</h3>
+            <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif" alt="Mouse Gamer">
+            <p class="price">R$ 89,90</p>
+            <p class="installment">2x de R$ 44,95</p>
+            <button class="buy" onclick="comprar('Mouse Gamer')">Comprar</button>
+        </div>
+        <div class="product">
+            <h3>Teclado Gamer</h3>
+            <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" alt="Teclado Gamer">
+            <p class="price">R$ 129,90</p>
+            <p class="installment">3x de R$ 43,30</p>
+            <button class="buy" onclick="comprar('Teclado Gamer')">Comprar</button>
+        </div>
+    </div>
 </div>
 
+<div class="section">
+    <h2>Gadgets & Carregadores</h2>
+    <div class="products">
+        <div class="product">
+            <h3>Power Bank</h3>
+            <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" alt="Power Bank">
+            <p class="price">R$ 119,90</p>
+            <p class="installment">3x de R$ 39,97</p>
+            <button class="buy" onclick="comprar('Power Bank')">Comprar</button>
+        </div>
+        <div class="product">
+            <h3>Fone de Ouvido Gamer</h3>
+            <img src="https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif" alt="Fone Gamer">
+            <p class="price">R$ 149,90</p>
+            <p class="installment">3x de R$ 49,97</p>
+            <button class="buy" onclick="comprar('Fone de Ouvido Gamer')">Comprar</button>
+        </div>
+        <div class="product">
+            <h3>Carregador Rápido</h3>
+            <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Carregador">
+            <p class="price">R$ 59,90</p>
+            <p class="installment">2x de R$ 29,95</p>
+            <button class="buy" onclick="comprar('Carregador Rápido')">Comprar</button>
+        </div>
+    </div>
 </div>
 
 <div class="footer">
