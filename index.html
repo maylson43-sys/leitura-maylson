@@ -2,15 +2,16 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Marketplace - Maylson</title>
+<title>Marketplace Maylson</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    background: #f5f5f5;
 }
 
+/* LAYOUT */
 .container {
     display: grid;
     grid-template-columns: 220px 1fr;
@@ -19,8 +20,7 @@ body {
 
 /* MENU */
 .menu {
-    background: #111;
-    color: white;
+    background: #ffe600;
     padding: 20px;
 }
 
@@ -30,20 +30,30 @@ body {
 
 .menu a {
     display: block;
-    color: #ccc;
     text-decoration: none;
+    color: black;
     margin: 10px 0;
-}
-
-.menu a:hover {
-    color: white;
+    font-weight: bold;
 }
 
 /* CONTEÚDO */
 .content {
-    padding: 30px;
+    padding: 20px;
 }
 
+/* BANNER */
+.banner img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+/* TÍTULOS */
+h2 {
+    margin-top: 40px;
+}
+
+/* PRODUTOS */
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -52,37 +62,35 @@ body {
 
 .product {
     background: white;
+    border-radius: 10px;
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .product img {
     width: 100%;
-    border-radius: 5px;
-}
-
-.product h3 {
-    margin: 10px 0 5px;
+    border-radius: 8px;
 }
 
 .price {
     color: green;
+    font-size: 18px;
     font-weight: bold;
 }
 
 button {
     width: 100%;
     padding: 10px;
-    background: black;
-    color: white;
+    background: #3483fa;
     border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
 }
 
 button:hover {
-    background: #333;
+    background: #2968c8;
 }
 
 /* MOBILE */
@@ -90,7 +98,6 @@ button:hover {
     .container {
         grid-template-columns: 1fr;
     }
-
     .menu {
         display: none;
     }
@@ -102,52 +109,67 @@ button:hover {
 
 <div class="container">
 
-    <!-- MENU -->
-    <div class="menu">
-        <h2>🛒 Marketplace</h2>
-        <a href="#">Início</a>
-        <a href="#">Eletrônicos</a>
-        <h2 id="roupas">Roupas</h2>
-        <a href="#">Serviços</a>
-        <a href="#">Contato</a>
+<!-- MENU -->
+<div class="menu">
+    <h2>🛒 Loja</h2>
+    <a href="#inicio">Início</a>
+    <a href="#eletronicos">Eletrônicos</a>
+    <a href="#ofertas">Ofertas</a>
+    <a href="#contato">Contato</a>
+</div>
+
+<!-- CONTEÚDO -->
+<div class="content">
+
+    <!-- INÍCIO -->
+    <div id="inicio" class="banner">
+        <img src="https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif">
     </div>
 
-    <!-- CONTEÚDO -->
-    <div class="content">
-        <h1>Produtos em destaque</h1>
+    <!-- ELETRÔNICOS -->
+    <h2 id="eletronicos">🔥 Eletrônicos</h2>
 
-        <div class="products">
+    <div class="products">
+        <div class="product">
+            <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif">
+            <h3>Fone Bluetooth</h3>
+            <p class="price">R$ 99,90</p>
+            <button>Comprar</button>
+        </div>
 
-            <div class="product">
-                <img src="https://via.placeholder.com/300">
-                <h3>Produto 1</h3>
-                <p class="price">R$ 99,90</p>
-                <button>Comprar</button>
-            </div>
-
-            <div class="product">
-                <img src="https://via.placeholder.com/300">
-                <h3>Produto 2</h3>
-                <p class="price">R$ 149,90</p>
-                <button>Comprar</button>
-            </div>
-
-            <div class="product">
-                <img src="https://via.placeholder.com/300">
-                <h3>Produto 3</h3>
-                <p class="price">R$ 59,90</p>
-                <button>Comprar</button>
-            </div>
-
+        <div class="product">
+            <img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif">
+            <h3>Smartwatch</h3>
+            <p class="price">R$ 199,90</p>
+            <button>Comprar</button>
         </div>
     </div>
 
+    <!-- OFERTAS -->
+    <h2 id="ofertas">💥 Ofertas do Dia</h2>
+
+    <div class="products">
+        <div class="product">
+            <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif">
+            <h3>Caixa de Som</h3>
+            <p class="price">R$ 149,90</p>
+            <button>Comprar</button>
+        </div>
+
+        <div class="product">
+            <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif">
+            <h3>Teclado Gamer</h3>
+            <p class="price">R$ 129,90</p>
+            <button>Comprar</button>
+        </div>
+    </div>
+
+    <!-- CONTATO -->
+    <h2 id="contato">📞 Contato</h2>
+    <p>Fale conosco pelo WhatsApp</p>
+
+</div>
 </div>
 
 </body>
 </html>
-
-
-
-
-
