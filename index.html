@@ -8,297 +8,219 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #e8f0ff 0%, #c9dcff 50%, #f2f6fc 100%);
+    background: linear-gradient(
+        to bottom,
+        #0a4dff 0%,
+        #3f7cff 25%,
+        #8fb3ff 50%,
+        #dfe9ff 75%,
+        #f5f7fb 100%
+    );
 }
 
-/* LAYOUT */
-.container {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    min-height: 100vh;
-}
-
-/* MENU */
-.menu {
-    background: #0a3d91;
-    padding: 20px;
-    color: white;
+/* HEADER */
+header {
+    background: white;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #0a4dff;
 }
 
 .logo img {
-    width: 38px;
+    width: 40px;
 }
 
-.logo span {
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.menu a {
-    display: block;
-    text-decoration: none;
-    color: #dbe7ff;
-    margin: 10px 0;
-    font-weight: bold;
-}
-
-.menu a:hover {
-    color: white;
-}
-
-/* CONTEÚDO */
-.content {
-    padding: 20px;
-}
-
-/* TOPO */
-.top-bar {
+/* BUSCA */
+.search-box {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    gap: 5px;
 }
 
-.search {
-    display: flex;
-    gap: 6px;
-}
-
-.search input {
+.search-box input {
     padding: 8px;
-    width: 200px;
+    width: 220px;
     border-radius: 6px;
     border: 1px solid #ccc;
 }
 
-.search button {
-    padding: 8px 14px;
-    background: #1a73e8;
+.search-box button {
+    padding: 8px 12px;
     border: none;
-    color: white;
     border-radius: 6px;
+    background: #0a4dff;
+    color: white;
     cursor: pointer;
 }
 
-.user span {
-    font-weight: bold;
-    color: #0a3d91;
+/* LOGIN */
+.user-area {
+    font-size: 14px;
 }
 
-.user button {
-    padding: 8px 14px;
-    background: #1a73e8;
-    border: none;
-    color: white;
+.user-area button {
+    padding: 6px 10px;
     border-radius: 6px;
+    border: none;
+    background: #0a4dff;
+    color: white;
     cursor: pointer;
-}
-
-/* BANNER */
-.banner img {
-    width: 100%;
-    max-height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 25px;
 }
 
 /* PRODUTOS */
-.products {
+.container {
+    padding: 40px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
 }
 
 .product {
     background: white;
     border-radius: 12px;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
 }
 
-.product:hover {
-    transform: translateY(-4px);
-}
-
-/* IMAGENS AINDA MENORES */
 .product img {
-    width: 100%;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 8px;
+    width: 120px;
+    height: auto;
+}
+
+.product h3 {
+    font-size: 15px;
+    margin: 10px 0;
 }
 
 .price {
-    color: #0a7d2f;
+    color: green;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .installment {
-    font-size: 12px;
-    color: #666;
+    font-size: 13px;
+    color: #555;
 }
 
-.buy {
-    width: 100%;
-    margin-top: 6px;
+.product button {
+    margin-top: 8px;
     padding: 8px;
-    background: #1a73e8;
-    border: none;
+    width: 100%;
+    background: #0a4dff;
     color: white;
-    border-radius: 6px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-/* LOGIN */
-.login-box {
-    display: none;
+/* FOOTER */
+footer {
     background: white;
-    padding: 18px;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-    position: fixed;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -35%);
-    width: 260px;
-}
-
-.login-box input {
-    width: 100%;
-    padding: 8px;
-    margin: 6px 0;
-}
-
-.login-box button {
-    width: 100%;
-    padding: 9px;
-    background: #1a73e8;
-    border: none;
-    color: white;
-    border-radius: 6px;
-    margin-top: 8px;
-}
-
-/* RODAPÉ */
-.footer {
-    margin-top: 40px;
     padding: 15px;
     text-align: center;
+    margin-top: 30px;
     font-size: 14px;
-    color: #555;
-    border-top: 1px solid #ddd;
-}
-
-/* MOBILE */
-@media (max-width: 850px) {
-    .container {
-        grid-template-columns: 1fr;
-    }
-    .menu {
-        display: none;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<!-- MENU -->
-<div class="menu">
+<header>
     <div class="logo">
         <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png">
-        <span>Carl & Co Select</span>
+        Carl & Co Select
     </div>
 
-    <a href="#">Início</a>
-    <a href="#">Eletrônicos</a>
-    <a href="#">Acessórios</a>
-    <a href="#">Ofertas</a>
-</div>
-
-<!-- CONTEÚDO -->
-<div class="content">
-
-<div class="top-bar">
-    <div class="search">
+    <div class="search-box">
         <input type="text" id="search" placeholder="Buscar produtos...">
         <button onclick="buscar()">Buscar</button>
     </div>
 
-    <div class="user" id="userArea">
-        <button onclick="abrirLogin()">Entrar / Criar conta</button>
+    <div class="user-area" id="userArea">
+        <button onclick="login()">Criar conta / Login</button>
     </div>
+</header>
+
+<div class="container" id="products">
+
+    <div class="product">
+        <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
+        <h3>Fone Bluetooth</h3>
+        <p class="price">R$ 99,90</p>
+        <p class="installment">ou 3x de R$ 33,30</p>
+        <button>Comprar</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif">
+        <h3>Smartwatch</h3>
+        <p class="price">R$ 149,90</p>
+        <p class="installment">ou 3x de R$ 49,97</p>
+        <button>Comprar</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.giphy.com/media/xT0GqeSlGSRQut4H7a/giphy.gif">
+        <h3>Caixa de Som</h3>
+        <p class="price">R$ 199,90</p>
+        <p class="installment">ou 4x de R$ 49,97</p>
+        <button>Comprar</button>
+    </div>
+
+    <div class="product">
+        <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif">
+        <h3>Teclado Gamer</h3>
+        <p class="price">R$ 129,90</p>
+        <p class="installment">ou 3x de R$ 43,30</p>
+        <button>Comprar</button>
+    </div>
+
 </div>
 
-<div class="banner">
-    <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif">
-</div>
-
-<div class="products" id="produtos">
-
-<!-- PRODUTOS -->
-<div class="product"><h3>Fone Bluetooth</h3><img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif"><p class="price">R$ 99,90</p><p class="installment">3x de R$ 33,30</p><button class="buy">Comprar</button></div>
-
-<div class="product"><h3>Smartwatch</h3><img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif"><p class="price">R$ 199,90</p><p class="installment">6x de R$ 33,31</p><button class="buy">Comprar</button></div>
-
-<div class="product"><h3>Mouse Gamer</h3><img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif"><p class="price">R$ 89,90</p><p class="installment">2x de R$ 44,95</p><button class="buy">Comprar</button></div>
-
-<div class="product"><h3>Teclado Gamer</h3><img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif"><p class="price">R$ 129,90</p><p class="installment">3x de R$ 43,30</p><button class="buy">Comprar</button></div>
-
-<div class="product"><h3>Power Bank</h3><img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"><p class="price">R$ 119,90</p><p class="installment">3x de R$ 39,97</p><button class="buy">Comprar</button></div>
-
-</div>
-
-<div class="footer">
-    © 2026 — <strong>Carl & Co Select</strong>
-</div>
-
-</div>
-</div>
-
-<!-- LOGIN -->
-<div class="login-box" id="loginBox">
-    <h3>Criar conta / Entrar</h3>
-    <input type="text" id="nome" placeholder="Seu nome">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Senha">
-    <button onclick="login()">Entrar</button>
-</div>
+<footer>
+    © 2026 — Carl & Co Select · Todos os direitos reservados
+</footer>
 
 <script>
-function buscar() {
-    let texto = document.getElementById("search").value.toLowerCase();
-    let produtos = document.getElementsByClassName("product");
-
-    for (let i = 0; i < produtos.length; i++) {
-        let nome = produtos[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
-        produtos[i].style.display = nome.includes(texto) ? "block" : "none";
-    }
-}
-
-function abrirLogin() {
-    document.getElementById("loginBox").style.display = "block";
-}
-
 function login() {
-    let nome = document.getElementById("nome").value;
-    if (nome !== "") {
-        document.getElementById("userArea").innerHTML = `<span>Olá, ${nome}</span>`;
-        document.getElementById("loginBox").style.display = "none";
+    let nome = prompt("Digite seu nome:");
+    if(nome) {
+        localStorage.setItem("usuario", nome);
+        mostrarUsuario();
     }
 }
+
+function mostrarUsuario() {
+    let nome = localStorage.getItem("usuario");
+    if(nome) {
+        document.getElementById("userArea").innerHTML = "Olá, <strong>" + nome + "</strong>";
+    }
+}
+
+function buscar() {
+    let termo = document.getElementById("search").value.toLowerCase();
+    let produtos = document.querySelectorAll(".product");
+
+    produtos.forEach(p => {
+        let nome = p.innerText.toLowerCase();
+        p.style.display = nome.includes(termo) ? "block" : "none";
+    });
+}
+
+mostrarUsuario();
 </script>
 
 </body>
