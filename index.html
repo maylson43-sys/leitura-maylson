@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f2f6fc;
+    background: linear-gradient(to bottom, #e8f0ff 0%, #c9dcff 50%, #f2f6fc 100%);
 }
 
 /* LAYOUT */
@@ -33,11 +33,11 @@ body {
 }
 
 .logo img {
-    width: 42px;
+    width: 38px;
 }
 
 .logo span {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
 }
 
@@ -66,11 +66,30 @@ body {
     margin-bottom: 20px;
 }
 
+.search {
+    display: flex;
+    gap: 6px;
+}
+
 .search input {
     padding: 8px;
-    width: 220px;
+    width: 200px;
     border-radius: 6px;
     border: 1px solid #ccc;
+}
+
+.search button {
+    padding: 8px 14px;
+    background: #1a73e8;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.user span {
+    font-weight: bold;
+    color: #0a3d91;
 }
 
 .user button {
@@ -85,7 +104,7 @@ body {
 /* BANNER */
 .banner img {
     width: 100%;
-    max-height: 170px;
+    max-height: 160px;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 25px;
@@ -94,25 +113,26 @@ body {
 /* PRODUTOS */
 .products {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
 }
 
 .product {
     background: white;
     border-radius: 12px;
-    padding: 12px;
+    padding: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: transform 0.3s;
 }
 
 .product:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
+/* IMAGENS AINDA MENORES */
 .product img {
     width: 100%;
-    height: 90px;
+    height: 70px;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -120,18 +140,18 @@ body {
 .price {
     color: #0a7d2f;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .installment {
-    font-size: 13px;
+    font-size: 12px;
     color: #666;
 }
 
 .buy {
     width: 100%;
-    margin-top: 8px;
-    padding: 9px;
+    margin-top: 6px;
+    padding: 8px;
     background: #1a73e8;
     border: none;
     color: white;
@@ -213,9 +233,11 @@ body {
 
 <div class="top-bar">
     <div class="search">
-        <input type="text" id="search" placeholder="Buscar produtos..." onkeyup="buscar()">
+        <input type="text" id="search" placeholder="Buscar produtos...">
+        <button onclick="buscar()">Buscar</button>
     </div>
-    <div class="user">
+
+    <div class="user" id="userArea">
         <button onclick="abrirLogin()">Entrar / Criar conta</button>
     </div>
 </div>
@@ -226,34 +248,21 @@ body {
 
 <div class="products" id="produtos">
 
-<div class="product">
-    <h3>Fone Bluetooth</h3>
-    <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif">
-    <p class="price">R$ 99,90</p>
-    <p class="installment">3x de R$ 33,30</p>
-    <button class="buy">Comprar</button>
-</div>
+<!-- PRODUTOS -->
+<div class="product"><h3>Fone Bluetooth</h3><img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif"><p class="price">R$ 99,90</p><p class="installment">3x de R$ 33,30</p><button class="buy">Comprar</button></div>
 
-<div class="product">
-    <h3>Smartwatch</h3>
-    <img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif">
-    <p class="price">R$ 199,90</p>
-    <p class="installment">6x de R$ 33,31</p>
-    <button class="buy">Comprar</button>
-</div>
+<div class="product"><h3>Smartwatch</h3><img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif"><p class="price">R$ 199,90</p><p class="installment">6x de R$ 33,31</p><button class="buy">Comprar</button></div>
 
-<div class="product">
-    <h3>Mouse Gamer</h3>
-    <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif">
-    <p class="price">R$ 89,90</p>
-    <p class="installment">2x de R$ 44,95</p>
-    <button class="buy">Comprar</button>
-</div>
+<div class="product"><h3>Mouse Gamer</h3><img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif"><p class="price">R$ 89,90</p><p class="installment">2x de R$ 44,95</p><button class="buy">Comprar</button></div>
+
+<div class="product"><h3>Teclado Gamer</h3><img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif"><p class="price">R$ 129,90</p><p class="installment">3x de R$ 43,30</p><button class="buy">Comprar</button></div>
+
+<div class="product"><h3>Power Bank</h3><img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"><p class="price">R$ 119,90</p><p class="installment">3x de R$ 39,97</p><button class="buy">Comprar</button></div>
 
 </div>
 
 <div class="footer">
-    © 2026 — <strong>Carl & Co Select</strong> · Todos os direitos reservados
+    © 2026 — <strong>Carl & Co Select</strong>
 </div>
 
 </div>
@@ -261,10 +270,11 @@ body {
 
 <!-- LOGIN -->
 <div class="login-box" id="loginBox">
-    <h3>Entrar / Criar conta</h3>
+    <h3>Criar conta / Entrar</h3>
+    <input type="text" id="nome" placeholder="Seu nome">
     <input type="email" placeholder="Email">
     <input type="password" placeholder="Senha">
-    <button onclick="fecharLogin()">Entrar</button>
+    <button onclick="login()">Entrar</button>
 </div>
 
 <script>
@@ -282,8 +292,12 @@ function abrirLogin() {
     document.getElementById("loginBox").style.display = "block";
 }
 
-function fecharLogin() {
-    document.getElementById("loginBox").style.display = "none";
+function login() {
+    let nome = document.getElementById("nome").value;
+    if (nome !== "") {
+        document.getElementById("userArea").innerHTML = `<span>Olá, ${nome}</span>`;
+        document.getElementById("loginBox").style.display = "none";
+    }
 }
 </script>
 
