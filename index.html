@@ -2,76 +2,136 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Leitura de Maylson</title>
-
+    <title>Projeto de Leitura - Maylson</title>
     <style>
         body {
-            font-family: Georgia, serif;
-            background: #f4f1ea;
-            padding: 30px;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f2f2f2;
         }
-        h1 {
+
+        .container {
+            display: grid;
+            grid-template-columns: 220px 1fr 220px;
+            min-height: 100vh;
+        }
+
+        /* MENU LATERAL ESQUERDO */
+        .sidebar {
+            background: #1e1e2f;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #ddd;
+            text-decoration: none;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .sidebar a:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        /* CONTEÚDO CENTRAL */
+        .content {
+            background: white;
+            padding: 40px;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .content h1 {
             text-align: center;
         }
-        #leitura {
-            max-width: 700px;
-            margin: auto;
+
+        /* LATERAL DIREITA */
+        .info {
+            background: #eeeeee;
+            padding: 20px;
+            font-size: 14px;
         }
-        p {
-            font-size: 18px;
-            line-height: 1.7;
-            text-align: justify;
+
+        .info h3 {
+            margin-top: 0;
         }
-        button {
-            padding: 10px 18px;
-            margin: 10px;
-            cursor: pointer;
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVO (CELULAR) */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar, .info {
+                display: none;
+            }
         }
     </style>
 </head>
-
 <body>
 
-<div id="leitura">
-    <h1>📖 Leitura de Maylson</h1>
-    <h3 id="capitulo">Capítulo 1</h3>
+<div class="container">
 
-    <p id="texto"></p>
+    <!-- MENU -->
+    <div class="sidebar">
+        <h2>📚 Leitura</h2>
+        <a href="#">Início</a>
+        <a href="#">Capítulo 1</a>
+        <a href="#">Capítulo 2</a>
+        <a href="#">Capítulo 3</a>
+        <a href="#">Sobre</a>
+    </div>
 
-    <button onclick="anterior()">⬅ Anterior</button>
-    <button onclick="proximo()">Próximo ➡</button>
+    <!-- CONTEÚDO -->
+    <div class="content">
+        <h1>Projeto de Leitura</h1>
+
+        <p>
+            Bem-vindo ao meu projeto de leitura online.  
+            Aqui você pode ler textos com conforto, foco e um visual moderno.
+        </p>
+
+        <p>
+            Este site foi criado por Maylson como um projeto de aprendizado
+            em HTML e GitHub Pages.
+        </p>
+
+        <p>
+            Você pode usar este espaço para histórias, estudos,
+            capítulos de livros ou qualquer tipo de leitura.
+        </p>
+
+        <footer>
+            📖 Criado por Maylson — 2026
+        </footer>
+    </div>
+
+    <!-- INFORMAÇÕES -->
+    <div class="info">
+        <h3>ℹ️ Informações</h3>
+        <p><strong>Autor:</strong> Maylson</p>
+        <p><strong>Status:</strong> Online</p>
+        <p><strong>Modo:</strong> Leitura</p>
+        <p><strong>Atualização:</strong> Automática</p>
+    </div>
+
 </div>
-
-<script>
-    const capitulos = [
-        "Este é o primeiro capítulo do meu site de leitura pessoal.",
-        "Aqui está o segundo capítulo, criado por Maylson.",
-        "Este é o terceiro capítulo. O site já está no ar!"
-    ];
-
-    let atual = 0;
-
-    function atualizar() {
-        document.getElementById("texto").innerText = capitulos[atual];
-        document.getElementById("capitulo").innerText = "Capítulo " + (atual + 1);
-    }
-
-    function proximo() {
-        if (atual < capitulos.length - 1) {
-            atual++;
-            atualizar();
-        }
-    }
-
-    function anterior() {
-        if (atual > 0) {
-            atual--;
-            atualizar();
-        }
-    }
-
-    atualizar();
-</script>
 
 </body>
 </html>
