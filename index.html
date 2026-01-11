@@ -7,8 +7,9 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #e8f0ff 0%, #c9dcff 50%, #f2f6fc 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(to bottom, #c9e0ff 0%, #e6f0ff 100%);
+    color: #333;
 }
 
 /* LAYOUT */
@@ -38,7 +39,7 @@ body {
 }
 
 .logo span {
-    font-size: 17px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -48,10 +49,13 @@ body {
     color: #dbe7ff;
     margin: 10px 0;
     font-weight: bold;
-    transition: color 0.2s;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
 }
 
 .menu a:hover {
+    background: #155bb5;
     color: white;
 }
 
@@ -63,6 +67,7 @@ body {
 /* TOPO */
 .top-bar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
@@ -71,17 +76,24 @@ body {
 .search {
     display: flex;
     gap: 6px;
+    flex-wrap: wrap;
 }
 
 .search input {
-    padding: 8px;
-    width: 200px;
+    padding: 8px 12px;
+    width: 220px;
     border-radius: 6px;
     border: 1px solid #ccc;
+    transition: border 0.2s;
+}
+
+.search input:focus {
+    border-color: #1a73e8;
+    outline: none;
 }
 
 .search button {
-    padding: 8px 14px;
+    padding: 8px 16px;
     background: #1a73e8;
     border: none;
     color: white;
@@ -100,7 +112,7 @@ body {
 }
 
 .user button {
-    padding: 8px 14px;
+    padding: 8px 16px;
     background: #1a73e8;
     border: none;
     color: white;
@@ -114,33 +126,48 @@ body {
 }
 
 /* BANNER */
+.banner {
+    margin-bottom: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 .banner img {
     width: 100%;
-    max-height: 160px;
+    max-height: 180px;
     object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 25px;
+}
+
+/* SEÇÕES */
+.products h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #0a3d91;
+    border-bottom: 2px solid #1a73e8;
+    display: inline-block;
+    padding-bottom: 4px;
 }
 
 /* PRODUTOS */
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 14px;
+    gap: 16px;
 }
 
 .product {
     background: white;
     border-radius: 12px;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
 }
 
 .product:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 .product img {
@@ -159,16 +186,17 @@ body {
     color: #0a7d2f;
     font-weight: bold;
     font-size: 15px;
+    margin: 6px 0 2px;
 }
 
 .installment {
     font-size: 12px;
     color: #666;
+    margin-bottom: 6px;
 }
 
 .buy {
     width: 100%;
-    margin-top: 6px;
     padding: 8px;
     background: #1a73e8;
     border: none;
@@ -197,20 +225,21 @@ body {
 .login-box {
     display: none;
     background: white;
-    padding: 18px;
+    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     position: fixed;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -35%);
-    width: 280px;
+    width: 300px;
     z-index: 999;
 }
 
 .login-box h3 {
     text-align: center;
     margin-bottom: 12px;
+    color: #0a3d91;
 }
 
 .login-box input {
@@ -219,11 +248,17 @@ body {
     margin: 6px 0;
     border-radius: 6px;
     border: 1px solid #ccc;
+    transition: border 0.2s;
+}
+
+.login-box input:focus {
+    border-color: #1a73e8;
+    outline: none;
 }
 
 .login-box button {
     width: 100%;
-    padding: 9px;
+    padding: 10px;
     background: #1a73e8;
     border: none;
     color: white;
@@ -239,11 +274,12 @@ body {
 /* RODAPÉ */
 .footer {
     margin-top: 40px;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     font-size: 14px;
     color: #555;
     border-top: 1px solid #ddd;
+    background: #e6f0ff;
 }
 
 /* MOBILE */
@@ -257,7 +293,6 @@ body {
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -289,69 +324,29 @@ body {
     </div>
 </div>
 
+<!-- BANNER ANIMADO COM VÁRIOS PRODUTOS -->
 <div class="banner">
-    <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" alt="Banner">
+    <img src="https://media.giphy.com/media/3o7TKM6N7cQtO4dKZC/giphy.gif" alt="Banner Marketplace Produtos">
 </div>
 
-<div class="products" id="produtos">
+<!-- PRODUTOS POR SEÇÃO -->
+<div class="products">
 
-<!-- PRODUTOS -->
+<h2>Eletrônicos</h2>
 <div class="product">
-    <h3>Fone Bluetooth</h3>
-    <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif" alt="Fone Bluetooth">
-    <p class="price">R$ 99,90</p>
-    <p class="installment">3x de R$ 33,30</p>
-    <button class="buy" onclick="comprar('Fone Bluetooth')">Comprar</button>
+    <h3>Smartphone</h3>
+    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Smartphone">
+    <p class="price">R$ 1.499,90</p>
+    <p class="installment">12x de R$ 124,99</p>
+    <button class="buy" onclick="comprar('Smartphone')">Comprar</button>
 </div>
-
 <div class="product">
-    <h3>Smartwatch</h3>
-    <img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif" alt="Smartwatch">
-    <p class="price">R$ 199,90</p>
-    <p class="installment">6x de R$ 33,31</p>
-    <button class="buy" onclick="comprar('Smartwatch')">Comprar</button>
+    <h3>Tablet</h3>
+    <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" alt="Tablet">
+    <p class="price">R$ 799,90</p>
+    <p class="installment">8x de R$ 99,99</p>
+    <button class="buy" onclick="comprar('Tablet')">Comprar</button>
 </div>
-
-<div class="product">
-    <h3>Mouse Gamer</h3>
-    <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif" alt="Mouse Gamer">
-    <p class="price">R$ 89,90</p>
-    <p class="installment">2x de R$ 44,95</p>
-    <button class="buy" onclick="comprar('Mouse Gamer')">Comprar</button>
-</div>
-
-<div class="product">
-    <h3>Teclado Gamer</h3>
-    <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" alt="Teclado Gamer">
-    <p class="price">R$ 129,90</p>
-    <p class="installment">3x de R$ 43,30</p>
-    <button class="buy" onclick="comprar('Teclado Gamer')">Comprar</button>
-</div>
-
-<div class="product">
-    <h3>Power Bank</h3>
-    <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" alt="Power Bank">
-    <p class="price">R$ 119,90</p>
-    <p class="installment">3x de R$ 39,97</p>
-    <button class="buy" onclick="comprar('Power Bank')">Comprar</button>
-</div>
-
-<div class="product">
-    <h3>Fone de Ouvido Gamer</h3>
-    <img src="https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif" alt="Fone Gamer">
-    <p class="price">R$ 149,90</p>
-    <p class="installment">3x de R$ 49,97</p>
-    <button class="buy" onclick="comprar('Fone de Ouvido Gamer')">Comprar</button>
-</div>
-
-<div class="product">
-    <h3>Carregador Rápido</h3>
-    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Carregador">
-    <p class="price">R$ 59,90</p>
-    <p class="installment">2x de R$ 29,95</p>
-    <button class="buy" onclick="comprar('Carregador Rápido')">Comprar</button>
-</div>
-
 <div class="product">
     <h3>Câmera de Ação</h3>
     <img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" alt="Câmera de Ação">
@@ -360,74 +355,12 @@ body {
     <button class="buy" onclick="comprar('Câmera de Ação')">Comprar</button>
 </div>
 
+<h2>Acessórios</h2>
 <div class="product">
-    <h3>Smartphone</h3>
-    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Smartphone">
-    <p class="price">R$ 1.499,90</p>
-    <p class="installment">12x de R$ 124,99</p>
-    <button class="buy" onclick="comprar('Smartphone')">Comprar</button>
+    <h3>Fone Bluetooth</h3>
+    <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif" alt="Fone Bluetooth">
+    <p class="price">R$ 99,90</p>
+    <p class="installment">3x de R$ 33,30</p>
+    <button class="buy" onclick="comprar('Fone Bluetooth')">Comprar</button>
 </div>
-
 <div class="product">
-    <h3>Tablet</h3>
-    <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" alt="Tablet">
-    <p class="price">R$ 799,90</p>
-    <p class="installment">8x de R$ 99,99</p>
-    <button class="buy" onclick="comprar('Tablet')">Comprar</button>
-</div>
-
-</div>
-
-<div class="footer">
-    © 2026 — <strong>Carl & Co Select</strong>
-</div>
-
-</div>
-</div>
-
-<!-- LOGIN -->
-<div id="overlay" onclick="fecharLogin()"></div>
-<div class="login-box" id="loginBox">
-    <h3>Criar conta / Entrar</h3>
-    <input type="text" id="nome" placeholder="Seu nome">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Senha">
-    <button onclick="login()">Entrar</button>
-</div>
-
-<script>
-function buscar() {
-    let texto = document.getElementById("search").value.toLowerCase();
-    let produtos = document.getElementsByClassName("product");
-
-    for (let i = 0; i < produtos.length; i++) {
-        let nome = produtos[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
-        produtos[i].style.display = nome.includes(texto) ? "block" : "none";
-    }
-}
-
-function abrirLogin() {
-    document.getElementById("loginBox").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
-
-function fecharLogin() {
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-
-function login() {
-    let nome = document.getElementById("nome").value;
-    if (nome !== "") {
-        document.getElementById("userArea").innerHTML = `<span>Olá, ${nome}</span>`;
-        fecharLogin();
-    }
-}
-
-function comprar(produto) {
-    alert(`Você adicionou "${produto}" ao carrinho! 🛒`);
-}
-</script>
-
-</body>
-</html>
