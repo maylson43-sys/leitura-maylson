@@ -16,6 +16,7 @@ body {
     display: grid;
     grid-template-columns: 220px 1fr;
     min-height: 100vh;
+    transition: all 0.3s;
 }
 
 /* MENU */
@@ -47,6 +48,7 @@ body {
     color: #dbe7ff;
     margin: 10px 0;
     font-weight: bold;
+    transition: color 0.2s;
 }
 
 .menu a:hover {
@@ -85,6 +87,11 @@ body {
     color: white;
     border-radius: 6px;
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search button:hover {
+    background: #155bb5;
 }
 
 .user span {
@@ -99,6 +106,11 @@ body {
     color: white;
     border-radius: 6px;
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.user button:hover {
+    background: #155bb5;
 }
 
 /* BANNER */
@@ -122,19 +134,25 @@ body {
     border-radius: 12px;
     padding: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
 .product:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-/* IMAGENS AINDA MENORES */
 .product img {
     width: 100%;
-    height: 70px;
+    height: 90px;
     object-fit: cover;
     border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.product:hover img {
+    transform: scale(1.05);
 }
 
 .price {
@@ -157,9 +175,25 @@ body {
     color: white;
     border-radius: 6px;
     cursor: pointer;
+    transition: background 0.2s;
+}
+
+.buy:hover {
+    background: #155bb5;
 }
 
 /* LOGIN */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+}
+
 .login-box {
     display: none;
     background: white;
@@ -170,13 +204,21 @@ body {
     top: 35%;
     left: 50%;
     transform: translate(-50%, -35%);
-    width: 260px;
+    width: 280px;
+    z-index: 999;
+}
+
+.login-box h3 {
+    text-align: center;
+    margin-bottom: 12px;
 }
 
 .login-box input {
     width: 100%;
     padding: 8px;
     margin: 6px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
 }
 
 .login-box button {
@@ -187,6 +229,11 @@ body {
     color: white;
     border-radius: 6px;
     margin-top: 8px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background: #155bb5;
 }
 
 /* RODAPÉ */
@@ -218,7 +265,7 @@ body {
 <!-- MENU -->
 <div class="menu">
     <div class="logo">
-        <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png">
+        <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" alt="Logo">
         <span>Carl & Co Select</span>
     </div>
 
@@ -243,21 +290,91 @@ body {
 </div>
 
 <div class="banner">
-    <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif">
+    <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" alt="Banner">
 </div>
 
 <div class="products" id="produtos">
 
 <!-- PRODUTOS -->
-<div class="product"><h3>Fone Bluetooth</h3><img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif"><p class="price">R$ 99,90</p><p class="installment">3x de R$ 33,30</p><button class="buy">Comprar</button></div>
+<div class="product">
+    <h3>Fone Bluetooth</h3>
+    <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif" alt="Fone Bluetooth">
+    <p class="price">R$ 99,90</p>
+    <p class="installment">3x de R$ 33,30</p>
+    <button class="buy" onclick="comprar('Fone Bluetooth')">Comprar</button>
+</div>
 
-<div class="product"><h3>Smartwatch</h3><img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif"><p class="price">R$ 199,90</p><p class="installment">6x de R$ 33,31</p><button class="buy">Comprar</button></div>
+<div class="product">
+    <h3>Smartwatch</h3>
+    <img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif" alt="Smartwatch">
+    <p class="price">R$ 199,90</p>
+    <p class="installment">6x de R$ 33,31</p>
+    <button class="buy" onclick="comprar('Smartwatch')">Comprar</button>
+</div>
 
-<div class="product"><h3>Mouse Gamer</h3><img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif"><p class="price">R$ 89,90</p><p class="installment">2x de R$ 44,95</p><button class="buy">Comprar</button></div>
+<div class="product">
+    <h3>Mouse Gamer</h3>
+    <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif" alt="Mouse Gamer">
+    <p class="price">R$ 89,90</p>
+    <p class="installment">2x de R$ 44,95</p>
+    <button class="buy" onclick="comprar('Mouse Gamer')">Comprar</button>
+</div>
 
-<div class="product"><h3>Teclado Gamer</h3><img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif"><p class="price">R$ 129,90</p><p class="installment">3x de R$ 43,30</p><button class="buy">Comprar</button></div>
+<div class="product">
+    <h3>Teclado Gamer</h3>
+    <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" alt="Teclado Gamer">
+    <p class="price">R$ 129,90</p>
+    <p class="installment">3x de R$ 43,30</p>
+    <button class="buy" onclick="comprar('Teclado Gamer')">Comprar</button>
+</div>
 
-<div class="product"><h3>Power Bank</h3><img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"><p class="price">R$ 119,90</p><p class="installment">3x de R$ 39,97</p><button class="buy">Comprar</button></div>
+<div class="product">
+    <h3>Power Bank</h3>
+    <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" alt="Power Bank">
+    <p class="price">R$ 119,90</p>
+    <p class="installment">3x de R$ 39,97</p>
+    <button class="buy" onclick="comprar('Power Bank')">Comprar</button>
+</div>
+
+<div class="product">
+    <h3>Fone de Ouvido Gamer</h3>
+    <img src="https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif" alt="Fone Gamer">
+    <p class="price">R$ 149,90</p>
+    <p class="installment">3x de R$ 49,97</p>
+    <button class="buy" onclick="comprar('Fone de Ouvido Gamer')">Comprar</button>
+</div>
+
+<div class="product">
+    <h3>Carregador Rápido</h3>
+    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Carregador">
+    <p class="price">R$ 59,90</p>
+    <p class="installment">2x de R$ 29,95</p>
+    <button class="buy" onclick="comprar('Carregador Rápido')">Comprar</button>
+</div>
+
+<div class="product">
+    <h3>Câmera de Ação</h3>
+    <img src="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" alt="Câmera de Ação">
+    <p class="price">R$ 299,90</p>
+    <p class="installment">6x de R$ 49,98</p>
+    <button class="buy" onclick="comprar('Câmera de Ação')">Comprar</button>
+</div>
+
+<div class="product">
+    <h3>Smartphone</h3>
+    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Smartphone">
+    <p class="price">R$ 1.499,90</p>
+    <p class="installment">12x de R$ 124,99</p>
+    <button class="buy" onclick="comprar('Smartphone')">Comprar</button>
+</div>
+
+<div class="product">
+    <h3>Tablet</h3>
+    <img src="https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif" alt="Tablet">
+    <p class="price">R$ 799,90</p>
+    <p class="installment">8x de R$ 99,99</p>
+    <button class="buy" onclick="comprar('Tablet')">Comprar</button>
+</div>
 
 </div>
 
@@ -269,6 +386,7 @@ body {
 </div>
 
 <!-- LOGIN -->
+<div id="overlay" onclick="fecharLogin()"></div>
 <div class="login-box" id="loginBox">
     <h3>Criar conta / Entrar</h3>
     <input type="text" id="nome" placeholder="Seu nome">
@@ -290,14 +408,24 @@ function buscar() {
 
 function abrirLogin() {
     document.getElementById("loginBox").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+
+function fecharLogin() {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
 }
 
 function login() {
     let nome = document.getElementById("nome").value;
     if (nome !== "") {
         document.getElementById("userArea").innerHTML = `<span>Olá, ${nome}</span>`;
-        document.getElementById("loginBox").style.display = "none";
+        fecharLogin();
     }
+}
+
+function comprar(produto) {
+    alert(`Você adicionou "${produto}" ao carrinho! 🛒`);
 }
 </script>
 
