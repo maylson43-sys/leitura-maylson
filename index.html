@@ -2,26 +2,27 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Marketplace Maylson</title>
+<title>Maylson Marketplace</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
+    background: #f2f6fc;
 }
 
 /* LAYOUT */
 .container {
     display: grid;
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 230px 1fr;
     min-height: 100vh;
 }
 
 /* MENU */
 .menu {
-    background: #ffe600;
+    background: #0a3d91;
     padding: 20px;
+    color: white;
 }
 
 .menu h2 {
@@ -31,18 +32,18 @@ body {
 .menu a {
     display: block;
     text-decoration: none;
-    color: black;
+    color: #dbe7ff;
     margin: 12px 0;
     font-weight: bold;
 }
 
 .menu a:hover {
-    text-decoration: underline;
+    color: white;
 }
 
 /* CONTEÚDO */
 .content {
-    padding: 20px;
+    padding: 25px;
 }
 
 /* BANNER */
@@ -50,13 +51,14 @@ body {
     width: 100%;
     max-height: 220px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 30px;
 }
 
 /* TÍTULOS */
 h2 {
     margin-top: 40px;
+    color: #0a3d91;
 }
 
 /* PRODUTOS */
@@ -68,16 +70,15 @@ h2 {
 
 .product {
     background: white;
-    border-radius: 12px;
+    border-radius: 14px;
     padding: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* ANIMAÇÃO DO CARD */
 .product:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15);
 }
 
 /* IMAGEM / GIF */
@@ -85,30 +86,39 @@ h2 {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
+/* PREÇO */
 .price {
-    color: green;
+    color: #0a7d2f;
     font-size: 18px;
     font-weight: bold;
+    margin-bottom: 2px;
+}
+
+/* PARCELAMENTO */
+.installment {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
 }
 
 /* BOTÃO */
 button {
     width: 100%;
     padding: 12px;
-    background: #3483fa;
+    background: #1a73e8;
     border: none;
     color: white;
     font-size: 16px;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background: #2968c8;
+    background: #1558b0;
 }
 
 button:active {
@@ -116,7 +126,7 @@ button:active {
 }
 
 /* MOBILE */
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .container {
         grid-template-columns: 1fr;
     }
@@ -133,9 +143,10 @@ button:active {
 
 <!-- MENU -->
 <div class="menu">
-    <h2>🛒 Loja</h2>
+    <h2>🛒 Maylson Store</h2>
     <a href="#inicio">Início</a>
     <a href="#eletronicos">Eletrônicos</a>
+    <a href="#acessorios">Acessórios</a>
     <a href="#ofertas">Ofertas</a>
     <a href="#contato">Contato</a>
 </div>
@@ -143,52 +154,99 @@ button:active {
 <!-- CONTEÚDO -->
 <div class="content">
 
-    <!-- INÍCIO -->
-    <div id="inicio" class="banner">
-        <img src="https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif">
-    </div>
+<!-- INÍCIO -->
+<div id="inicio" class="banner">
+    <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif">
+</div>
 
-    <!-- ELETRÔNICOS -->
-    <h2 id="eletronicos">🔥 Eletrônicos</h2>
+<!-- ELETRÔNICOS -->
+<h2 id="eletronicos">🔌 Eletrônicos</h2>
 
-    <div class="products">
-        <div class="product">
-            <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif">
-            <h3>Fone Bluetooth</h3>
-            <p class="price">R$ 99,90</p>
-            <button>Comprar</button>
-        </div>
+<div class="products">
 
-        <div class="product">
-            <img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif">
-            <h3>Smartwatch</h3>
-            <p class="price">R$ 199,90</p>
-            <button>Comprar</button>
-        </div>
-    </div>
+<div class="product">
+    <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif">
+    <h3>Fone Bluetooth</h3>
+    <p class="price">R$ 99,90</p>
+    <p class="installment">ou 3x de R$ 33,30 sem juros</p>
+    <button>Comprar</button>
+</div>
 
-    <!-- OFERTAS -->
-    <h2 id="ofertas">💥 Ofertas do Dia</h2>
+<div class="product">
+    <img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif">
+    <h3>Smartwatch</h3>
+    <p class="price">R$ 199,90</p>
+    <p class="installment">ou 6x de R$ 33,31 sem juros</p>
+    <button>Comprar</button>
+</div>
 
-    <div class="products">
-        <div class="product">
-            <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif">
-            <h3>Caixa de Som</h3>
-            <p class="price">R$ 149,90</p>
-            <button>Comprar</button>
-        </div>
+<div class="product">
+    <img src="https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif">
+    <h3>Caixa de Som</h3>
+    <p class="price">R$ 149,90</p>
+    <p class="installment">ou 3x de R$ 49,97 sem juros</p>
+    <button>Comprar</button>
+</div>
 
-        <div class="product">
-            <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif">
-            <h3>Teclado Gamer</h3>
-            <p class="price">R$ 129,90</p>
-            <button>Comprar</button>
-        </div>
-    </div>
+</div>
 
-    <!-- CONTATO -->
-    <h2 id="contato">📞 Contato</h2>
-    <p>Fale conosco pelo WhatsApp</p>
+<!-- ACESSÓRIOS -->
+<h2 id="acessorios">🎧 Acessórios</h2>
+
+<div class="products">
+
+<div class="product">
+    <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif">
+    <h3>Teclado Gamer</h3>
+    <p class="price">R$ 129,90</p>
+    <p class="installment">ou 3x de R$ 43,30 sem juros</p>
+    <button>Comprar</button>
+</div>
+
+<div class="product">
+    <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif">
+    <h3>Mouse Gamer</h3>
+    <p class="price">R$ 89,90</p>
+    <p class="installment">ou 2x de R$ 44,95 sem juros</p>
+    <button>Comprar</button>
+</div>
+
+<div class="product">
+    <img src="https://media.giphy.com/media/3oEduSbSGpGaRX2Vri/giphy.gif">
+    <h3>Headset Gamer</h3>
+    <p class="price">R$ 179,90</p>
+    <p class="installment">ou 6x de R$ 29,98 sem juros</p>
+    <button>Comprar</button>
+</div>
+
+</div>
+
+<!-- OFERTAS -->
+<h2 id="ofertas">💥 Ofertas</h2>
+
+<div class="products">
+
+<div class="product">
+    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif">
+    <h3>Carregador Turbo</h3>
+    <p class="price">R$ 49,90</p>
+    <p class="installment">ou 2x de R$ 24,95 sem juros</p>
+    <button>Comprar</button>
+</div>
+
+<div class="product">
+    <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif">
+    <h3>Power Bank</h3>
+    <p class="price">R$ 119,90</p>
+    <p class="installment">ou 3x de R$ 39,97 sem juros</p>
+    <button>Comprar</button>
+</div>
+
+</div>
+
+<!-- CONTATO -->
+<h2 id="contato">📞 Contato</h2>
+<p>Atendimento via WhatsApp</p>
 
 </div>
 </div>
