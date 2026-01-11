@@ -29,7 +29,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .logo img {
@@ -45,7 +45,7 @@ body {
     display: block;
     text-decoration: none;
     color: #dbe7ff;
-    margin: 12px 0;
+    margin: 10px 0;
     font-weight: bold;
 }
 
@@ -58,19 +58,37 @@ body {
     padding: 20px;
 }
 
+/* TOPO */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search input {
+    padding: 8px;
+    width: 220px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.user button {
+    padding: 8px 14px;
+    background: #1a73e8;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
 /* BANNER */
 .banner img {
     width: 100%;
-    max-height: 180px;
+    max-height: 170px;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 25px;
-}
-
-/* TÍTULOS */
-h2 {
-    margin-top: 30px;
-    color: #0a3d91;
 }
 
 /* PRODUTOS */
@@ -85,70 +103,60 @@ h2 {
     border-radius: 12px;
     padding: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
 }
 
-.product:hover {
-    transform: translateY(-5px);
-}
-
-/* IMAGENS MENORES */
 .product img {
     width: 100%;
-    height: 90px; /* METADE DO TAMANHO */
+    height: 90px;
     object-fit: cover;
     border-radius: 8px;
 }
 
-/* PREÇO */
 .price {
     color: #0a7d2f;
-    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 2px;
 }
 
-/* PARCELAMENTO */
 .installment {
     font-size: 13px;
     color: #666;
-    margin-bottom: 8px;
 }
 
-/* BOTÃO */
-button {
+button.buy {
     width: 100%;
-    padding: 10px;
+    margin-top: 8px;
+    padding: 9px;
     background: #1a73e8;
     border: none;
     color: white;
-    font-size: 14px;
     border-radius: 6px;
     cursor: pointer;
 }
 
-button:hover {
-    background: #1558b0;
+/* LOGIN */
+.login-box {
+    display: none;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
 }
 
-/* RODAPÉ */
+.login-box input {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+}
+
 .footer {
-    margin-top: 40px;
-    padding: 15px;
+    margin-top: 30px;
     text-align: center;
     font-size: 14px;
     color: #555;
-    border-top: 1px solid #ddd;
-}
-
-/* MOBILE */
-@media (max-width: 850px) {
-    .container {
-        grid-template-columns: 1fr;
-    }
-    .menu {
-        display: none;
-    }
 }
 </style>
 </head>
@@ -159,76 +167,58 @@ button:hover {
 
 <!-- MENU -->
 <div class="menu">
+    <div class="logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
+        <span>Maylson Store</span>
+    </div>
 
-<div class="logo">
-    <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
-    <span>Maylson Store</span>
-</div>
-
-<a href="#inicio">Início</a>
-<a href="#eletronicos">Eletrônicos</a>
-<a href="#acessorios">Acessórios</a>
-<a href="#ofertas">Ofertas</a>
-<a href="#contato">Contato</a>
-
+    <a href="#">Início</a>
+    <a href="#">Eletrônicos</a>
+    <a href="#">Acessórios</a>
+    <a href="#">Ofertas</a>
 </div>
 
 <!-- CONTEÚDO -->
 <div class="content">
 
-<!-- BANNER -->
-<div id="inicio" class="banner">
+<!-- TOPO -->
+<div class="top-bar">
+    <div class="search">
+        <input type="text" id="search" placeholder="Buscar produto..." onkeyup="buscar()">
+    </div>
+    <div class="user">
+        <button onclick="abrirLogin()">Entrar / Criar conta</button>
+    </div>
+</div>
+
+<div class="banner">
     <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif">
 </div>
 
-<h2 id="eletronicos">🔌 Eletrônicos</h2>
-
-<div class="products">
+<div class="products" id="produtos">
 
 <div class="product">
-    <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif">
     <h3>Fone Bluetooth</h3>
+    <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif">
     <p class="price">R$ 99,90</p>
-    <p class="installment">ou 3x de R$ 33,30</p>
-    <button>Comprar</button>
+    <p class="installment">3x de R$ 33,30</p>
+    <button class="buy">Comprar</button>
 </div>
 
 <div class="product">
-    <img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif">
     <h3>Smartwatch</h3>
+    <img src="https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif">
     <p class="price">R$ 199,90</p>
-    <p class="installment">ou 6x de R$ 33,31</p>
-    <button>Comprar</button>
+    <p class="installment">6x de R$ 33,31</p>
+    <button class="buy">Comprar</button>
 </div>
 
 <div class="product">
-    <img src="https://media.giphy.com/media/l0HlNQ03J5JxX6lva/giphy.gif">
-    <h3>Caixa de Som</h3>
-    <p class="price">R$ 149,90</p>
-    <p class="installment">ou 3x de R$ 49,97</p>
-    <button>Comprar</button>
-</div>
-
-</div>
-
-<h2 id="acessorios">🎧 Acessórios</h2>
-
-<div class="products">
-
-<div class="product">
-    <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif">
-    <h3>Teclado Gamer</h3>
-    <p class="price">R$ 129,90</p>
-    <p class="installment">ou 3x de R$ 43,30</p>
-    <button>Comprar</button>
-</div>
-
-<div class="product">
-    <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif">
     <h3>Mouse Gamer</h3>
+    <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif">
     <p class="price">R$ 89,90</p>
-    <p class="installment">ou 2x de R$ 44,95</p>
-    <button>Comprar</button>
+    <p class="installment">2x de R$ 44,95</p>
+    <button class="buy">Comprar</button>
 </div>
 
 </div>
@@ -239,6 +229,34 @@ button:hover {
 
 </div>
 </div>
+
+<!-- LOGIN -->
+<div class="login-box" id="loginBox">
+    <h3>Entrar / Criar conta</h3>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Senha">
+    <button onclick="fecharLogin()">Entrar</button>
+</div>
+
+<script>
+function buscar() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let produtos = document.getElementsByClassName("product");
+
+    for (let i = 0; i < produtos.length; i++) {
+        let nome = produtos[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+        produtos[i].style.display = nome.includes(input) ? "block" : "none";
+    }
+}
+
+function abrirLogin() {
+    document.getElementById("loginBox").style.display = "block";
+}
+
+function fecharLogin() {
+    document.getElementById("loginBox").style.display = "none";
+}
+</script>
 
 </body>
 </html>
