@@ -364,3 +364,94 @@ body {
     <button class="buy" onclick="comprar('Fone Bluetooth')">Comprar</button>
 </div>
 <div class="product">
+    <h3>Mouse Gamer</h3>
+    <img src="https://media.giphy.com/media/26BRGoqbUQvk8nwTC/giphy.gif" alt="Mouse Gamer">
+    <p class="price">R$ 89,90</p>
+    <p class="installment">2x de R$ 44,95</p>
+    <button class="buy" onclick="comprar('Mouse Gamer')">Comprar</button>
+</div>
+<div class="product">
+    <h3>Teclado Gamer</h3>
+    <img src="https://media.giphy.com/media/xT0xezQGU5xCDJuCPe/giphy.gif" alt="Teclado Gamer">
+    <p class="price">R$ 129,90</p>
+    <p class="installment">3x de R$ 43,30</p>
+    <button class="buy" onclick="comprar('Teclado Gamer')">Comprar</button>
+</div>
+
+<h2>Gadgets & Carregadores</h2>
+<div class="product">
+    <h3>Power Bank</h3>
+    <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" alt="Power Bank">
+    <p class="price">R$ 119,90</p>
+    <p class="installment">3x de R$ 39,97</p>
+    <button class="buy" onclick="comprar('Power Bank')">Comprar</button>
+</div>
+<div class="product">
+    <h3>Fone de Ouvido Gamer</h3>
+    <img src="https://media.giphy.com/media/l0HlNaQ6gWfllcjDO/giphy.gif" alt="Fone Gamer">
+    <p class="price">R$ 149,90</p>
+    <p class="installment">3x de R$ 49,97</p>
+    <button class="buy" onclick="comprar('Fone de Ouvido Gamer')">Comprar</button>
+</div>
+<div class="product">
+    <h3>Carregador Rápido</h3>
+    <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Carregador">
+    <p class="price">R$ 59,90</p>
+    <p class="installment">2x de R$ 29,95</p>
+    <button class="buy" onclick="comprar('Carregador Rápido')">Comprar</button>
+</div>
+
+</div>
+
+<div class="footer">
+    © 2026 — <strong>Carl & Co Select</strong>
+</div>
+
+</div>
+</div>
+
+<!-- LOGIN -->
+<div id="overlay" onclick="fecharLogin()"></div>
+<div class="login-box" id="loginBox">
+    <h3>Criar conta / Entrar</h3>
+    <input type="text" id="nome" placeholder="Seu nome">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+</div>
+
+<script>
+function buscar() {
+    let texto = document.getElementById("search").value.toLowerCase();
+    let produtos = document.getElementsByClassName("product");
+    for (let i = 0; i < produtos.length; i++) {
+        let nome = produtos[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+        produtos[i].style.display = nome.includes(texto) ? "block" : "none";
+    }
+}
+
+function abrirLogin() {
+    document.getElementById("loginBox").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+}
+
+function fecharLogin() {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+}
+
+function login() {
+    let nome = document.getElementById("nome").value;
+    if (nome !== "") {
+        document.getElementById("userArea").innerHTML = `<span>Olá, ${nome}</span>`;
+        fecharLogin();
+    }
+}
+
+function comprar(produto) {
+    alert(`Você adicionou "${produto}" ao carrinho! 🛒`);
+}
+</script>
+
+</body>
+</html>
