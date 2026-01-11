@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Maylson Marketplace</title>
+<title>Carl & Co Select</title>
 
 <style>
 body {
@@ -29,11 +29,11 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .logo img {
-    width: 40px;
+    width: 42px;
 }
 
 .logo span {
@@ -103,6 +103,11 @@ body {
     border-radius: 12px;
     padding: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
 }
 
 .product img {
@@ -115,6 +120,7 @@ body {
 .price {
     color: #0a7d2f;
     font-weight: bold;
+    font-size: 16px;
 }
 
 .installment {
@@ -122,7 +128,7 @@ body {
     color: #666;
 }
 
-button.buy {
+.buy {
     width: 100%;
     margin-top: 8px;
     padding: 9px;
@@ -137,13 +143,14 @@ button.buy {
 .login-box {
     display: none;
     background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
     position: fixed;
-    top: 30%;
+    top: 35%;
     left: 50%;
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, -35%);
+    width: 260px;
 }
 
 .login-box input {
@@ -152,11 +159,34 @@ button.buy {
     margin: 6px 0;
 }
 
+.login-box button {
+    width: 100%;
+    padding: 9px;
+    background: #1a73e8;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    margin-top: 8px;
+}
+
+/* RODAPÉ */
 .footer {
-    margin-top: 30px;
+    margin-top: 40px;
+    padding: 15px;
     text-align: center;
     font-size: 14px;
     color: #555;
+    border-top: 1px solid #ddd;
+}
+
+/* MOBILE */
+@media (max-width: 850px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+    .menu {
+        display: none;
+    }
 }
 </style>
 </head>
@@ -168,8 +198,8 @@ button.buy {
 <!-- MENU -->
 <div class="menu">
     <div class="logo">
-        <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
-        <span>Maylson Store</span>
+        <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png">
+        <span>Carl & Co Select</span>
     </div>
 
     <a href="#">Início</a>
@@ -181,10 +211,9 @@ button.buy {
 <!-- CONTEÚDO -->
 <div class="content">
 
-<!-- TOPO -->
 <div class="top-bar">
     <div class="search">
-        <input type="text" id="search" placeholder="Buscar produto..." onkeyup="buscar()">
+        <input type="text" id="search" placeholder="Buscar produtos..." onkeyup="buscar()">
     </div>
     <div class="user">
         <button onclick="abrirLogin()">Entrar / Criar conta</button>
@@ -224,7 +253,7 @@ button.buy {
 </div>
 
 <div class="footer">
-    © 2026 — Desenvolvido por <strong>Maylson</strong>
+    © 2026 — <strong>Carl & Co Select</strong> · Todos os direitos reservados
 </div>
 
 </div>
@@ -240,12 +269,12 @@ button.buy {
 
 <script>
 function buscar() {
-    let input = document.getElementById("search").value.toLowerCase();
+    let texto = document.getElementById("search").value.toLowerCase();
     let produtos = document.getElementsByClassName("product");
 
     for (let i = 0; i < produtos.length; i++) {
         let nome = produtos[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
-        produtos[i].style.display = nome.includes(input) ? "block" : "none";
+        produtos[i].style.display = nome.includes(texto) ? "block" : "none";
     }
 }
 
