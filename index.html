@@ -1,134 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Projeto de Leitura - Maylson</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f2f2f2;
-        }
+<meta charset="UTF-8">
+<title>Marketplace - Maylson</title>
 
-        .container {
-            display: grid;
-            grid-template-columns: 220px 1fr 220px;
-            min-height: 100vh;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
 
-        /* MENU LATERAL ESQUERDO */
-        .sidebar {
-            background: #1e1e2f;
-            color: white;
-            padding: 20px;
-        }
+.container {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: 100vh;
+}
 
-        .sidebar h2 {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
+/* MENU */
+.menu {
+    background: #111;
+    color: white;
+    padding: 20px;
+}
 
-        .sidebar a {
-            display: block;
-            color: #ddd;
-            text-decoration: none;
-            margin-bottom: 10px;
-            padding: 8px;
-            border-radius: 5px;
-        }
+.menu h2 {
+    margin-top: 0;
+}
 
-        .sidebar a:hover {
-            background: #333;
-            color: #fff;
-        }
+.menu a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin: 10px 0;
+}
 
-        /* CONTEÚDO CENTRAL */
-        .content {
-            background: white;
-            padding: 40px;
-            line-height: 1.8;
-            font-size: 18px;
-        }
+.menu a:hover {
+    color: white;
+}
 
-        .content h1 {
-            text-align: center;
-        }
+/* CONTEÚDO */
+.content {
+    padding: 30px;
+}
 
-        /* LATERAL DIREITA */
-        .info {
-            background: #eeeeee;
-            padding: 20px;
-            font-size: 14px;
-        }
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
 
-        .info h3 {
-            margin-top: 0;
-        }
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
 
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #777;
-            font-size: 14px;
-        }
+.product img {
+    width: 100%;
+    border-radius: 5px;
+}
 
-        /* RESPONSIVO (CELULAR) */
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
+.product h3 {
+    margin: 10px 0 5px;
+}
 
-            .sidebar, .info {
-                display: none;
-            }
-        }
-    </style>
+.price {
+    color: green;
+    font-weight: bold;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #333;
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .menu {
+        display: none;
+    }
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
 
     <!-- MENU -->
-    <div class="sidebar">
-        <h2>📚 Leitura</h2>
+    <div class="menu">
+        <h2>🛒 Marketplace</h2>
         <a href="#">Início</a>
-        <a href="#">Capítulo 1</a>
-        <a href="#">Capítulo 2</a>
-        <a href="#">Capítulo 3</a>
-        <a href="#">Sobre</a>
+        <a href="#">Eletrônicos</a>
+        <a href="#">Roupas</a>
+        <a href="#">Serviços</a>
+        <a href="#">Contato</a>
     </div>
 
     <!-- CONTEÚDO -->
     <div class="content">
-        <h1>Projeto de Leitura</h1>
+        <h1>Produtos em destaque</h1>
 
-        <p>
-            Bem-vindo ao meu projeto de leitura online.  
-            Aqui você pode ler textos com conforto, foco e um visual moderno.
-        </p>
+        <div class="products">
 
-        <p>
-            Este site foi criado por Maylson como um projeto de aprendizado
-            em HTML e GitHub Pages.
-        </p>
+            <div class="product">
+                <img src="https://via.placeholder.com/300">
+                <h3>Produto 1</h3>
+                <p class="price">R$ 99,90</p>
+                <button>Comprar</button>
+            </div>
 
-        <p>
-            Você pode usar este espaço para histórias, estudos,
-            capítulos de livros ou qualquer tipo de leitura.
-        </p>
+            <div class="product">
+                <img src="https://via.placeholder.com/300">
+                <h3>Produto 2</h3>
+                <p class="price">R$ 149,90</p>
+                <button>Comprar</button>
+            </div>
 
-        <footer>
-            📖 Criado por Maylson — 2026
-        </footer>
-    </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/300">
+                <h3>Produto 3</h3>
+                <p class="price">R$ 59,90</p>
+                <button>Comprar</button>
+            </div>
 
-    <!-- INFORMAÇÕES -->
-    <div class="info">
-        <h3>ℹ️ Informações</h3>
-        <p><strong>Autor:</strong> Maylson</p>
-        <p><strong>Status:</strong> Online</p>
-        <p><strong>Modo:</strong> Leitura</p>
-        <p><strong>Atualização:</strong> Automática</p>
+        </div>
     </div>
 
 </div>
