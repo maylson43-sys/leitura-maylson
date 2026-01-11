@@ -8,7 +8,14 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #0a4dff 0%, #3f7cff 25%, #8fb3ff 50%, #dfe9ff 75%, #f5f7fb 100%);
+    background: linear-gradient(
+        to bottom,
+        #0a4dff 0%,
+        #3f7cff 25%,
+        #8fb3ff 50%,
+        #dfe9ff 75%,
+        #f5f7fb 100%
+    );
 }
 
 /* HEADER */
@@ -19,7 +26,6 @@ header {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 2px 8px rgba(0,0,0,.1);
-    flex-wrap: wrap;
 }
 
 .logo {
@@ -35,12 +41,10 @@ header {
     width: 40px;
 }
 
+/* BUSCA */
 .search-box {
     display: flex;
     gap: 5px;
-    flex: 1;
-    justify-content: center;
-    margin: 10px 0;
 }
 
 .search-box input {
@@ -59,6 +63,7 @@ header {
     cursor: pointer;
 }
 
+/* LOGIN */
 .user-area {
     font-size: 14px;
 }
@@ -72,122 +77,65 @@ header {
     cursor: pointer;
 }
 
-/* FILTROS */
-.filter-box {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.filter-box button {
-    padding: 6px 12px;
-    border-radius: 6px;
-    border: none;
-    background: #0a4dff;
-    color: white;
-    cursor: pointer;
-}
-
 /* PRODUTOS */
 .container {
-    padding: 20px 40px;
+    padding: 40px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
 }
 
 .product {
     background: white;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 12px;
+    padding: 15px;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
 }
 
 .product img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 8px;
+    width: 120px;
+    height: auto;
 }
 
 .product h3 {
-    font-size: 14px;
-    margin: 8px 0;
+    font-size: 15px;
+    margin: 10px 0;
 }
 
 .price {
     color: green;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .installment {
-    font-size: 12px;
+    font-size: 13px;
     color: #555;
 }
 
 .product button {
     margin-top: 8px;
-    padding: 6px;
+    padding: 8px;
     width: 100%;
     background: #0a4dff;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-}
-
-/* CARRINHO */
-#cart {
-    position: fixed;
-    right: 0;
-    top: 100px;
-    background: white;
-    border: 1px solid #ccc;
-    width: 250px;
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 10px;
-    border-radius: 8px 0 0 8px;
-    box-shadow: -2px 2px 10px rgba(0,0,0,.1);
-}
-
-#cart h3 {
-    margin-top: 0;
-    font-size: 16px;
-    text-align: center;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 6px;
-    font-size: 13px;
-}
-
-#cart button {
-    width: 100%;
-    padding: 6px;
-    background: #0a4dff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 5px;
 }
 
 /* FOOTER */
 footer {
     background: white;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 30px;
     font-size: 14px;
 }
 </style>
 </head>
+
 <body>
 
 <header>
@@ -206,79 +154,40 @@ footer {
     </div>
 </header>
 
-<!-- FILTROS -->
-<div class="filter-box">
-    <button onclick="filtrar('todos')">Todos</button>
-    <button onclick="filtrar('tenis')">Tênis</button>
-    <button onclick="filtrar('roupa')">Roupas</button>
-    <button onclick="filtrar('acessorio')">Acessórios</button>
-</div>
-
 <div class="container" id="products">
 
-    <div class="product" data-categoria="tenis">
-        <img src="https://cdn.pixabay.com/photo/2017/02/07/18/57/sneakers-2045411_1280.jpg" alt="Tênis Casual">
-        <h3>Tênis Casual</h3>
-        <p class="price">R$ 249,90</p>
-        <p class="installment">ou 5x de R$ 49,98</p>
-        <button onclick="addCart('Tênis Casual', 249.90)">Comprar</button>
-    </div>
-
-    <div class="product" data-categoria="tenis">
-        <img src="https://cdn.pixabay.com/photo/2017/08/10/07/50/sneakers-2618654_1280.jpg" alt="Tênis Esportivo">
-        <h3>Tênis Esportivo</h3>
-        <p class="price">R$ 299,90</p>
-        <p class="installment">ou 5x de R$ 59,98</p>
-        <button onclick="addCart('Tênis Esportivo', 299.90)">Comprar</button>
-    </div>
-
-    <div class="product" data-categoria="roupa">
-        <img src="https://cdn.pixabay.com/photo/2016/10/02/22/17/t-shirt-1710578_1280.jpg" alt="Camiseta Masculina">
-        <h3>Camiseta Masculina</h3>
-        <p class="price">R$ 89,90</p>
-        <p class="installment">ou 3x de R$ 29,97</p>
-        <button onclick="addCart('Camiseta Masculina', 89.90)">Comprar</button>
-    </div>
-
-    <div class="product" data-categoria="roupa">
-        <img src="https://cdn.pixabay.com/photo/2016/12/06/09/31/jeans-1880084_1280.jpg" alt="Calça Jeans">
-        <h3>Calça Jeans</h3>
-        <p class="price">R$ 149,90</p>
-        <p class="installment">ou 4x de R$ 37,48</p>
-        <button onclick="addCart('Calça Jeans', 149.90)">Comprar</button>
-    </div>
-
-    <div class="product" data-categoria="roupa">
-        <img src="https://cdn.pixabay.com/photo/2017/10/31/23/15/jacket-2903376_1280.jpg" alt="Jaqueta Estilosa">
-        <h3>Jaqueta Estilosa</h3>
-        <p class="price">R$ 199,90</p>
-        <p class="installment">ou 4x de R$ 49,98</p>
-        <button onclick="addCart('Jaqueta Estilosa', 199.90)">Comprar</button>
-    </div>
-
-    <div class="product" data-categoria="acessorio">
-        <img src="https://cdn.pixabay.com/photo/2017/06/20/18/19/headphones-2425126_1280.jpg" alt="Fone Bluetooth">
+    <div class="product">
+        <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif">
         <h3>Fone Bluetooth</h3>
         <p class="price">R$ 99,90</p>
         <p class="installment">ou 3x de R$ 33,30</p>
-        <button onclick="addCart('Fone Bluetooth', 99.90)">Comprar</button>
+        <button>Comprar</button>
     </div>
 
-    <div class="product" data-categoria="acessorio">
-        <img src="https://cdn.pixabay.com/photo/2016/03/27/22/22/watch-1283667_1280.jpg" alt="Relógio Smartwatch">
+    <div class="product">
+        <img src="https://media.giphy.com/media/3o7TKsQ8rWkzY5GQDu/giphy.gif">
         <h3>Smartwatch</h3>
         <p class="price">R$ 149,90</p>
         <p class="installment">ou 3x de R$ 49,97</p>
-        <button onclick="addCart('Smartwatch', 149.90)">Comprar</button>
+        <button>Comprar</button>
     </div>
 
-</div>
+    <div class="product">
+        <img src="https://media.giphy.com/media/xT0GqeSlGSRQut4H7a/giphy.gif">
+        <h3>Caixa de Som</h3>
+        <p class="price">R$ 199,90</p>
+        <p class="installment">ou 4x de R$ 49,97</p>
+        <button>Comprar</button>
+    </div>
 
-<!-- CARRINHO -->
-<div id="cart">
-    <h3>Carrinho</h3>
-    <div id="cart-items"></div>
-    <button onclick="finalizarCompra()">Finalizar Compra</button>
+    <div class="product">
+        <img src="https://media.giphy.com/media/26AHONQ79FdWZhAI0/giphy.gif">
+        <h3>Teclado Gamer</h3>
+        <p class="price">R$ 129,90</p>
+        <p class="installment">ou 3x de R$ 43,30</p>
+        <button>Comprar</button>
+    </div>
+
 </div>
 
 <footer>
@@ -286,7 +195,6 @@ footer {
 </footer>
 
 <script>
-// LOGIN
 function login() {
     let nome = prompt("Digite seu nome:");
     if(nome) {
@@ -302,65 +210,17 @@ function mostrarUsuario() {
     }
 }
 
-// BUSCA
 function buscar() {
     let termo = document.getElementById("search").value.toLowerCase();
     let produtos = document.querySelectorAll(".product");
+
     produtos.forEach(p => {
-        let nome = p.querySelector("h3").innerText.toLowerCase();
+        let nome = p.innerText.toLowerCase();
         p.style.display = nome.includes(termo) ? "block" : "none";
     });
 }
 
-// FILTRO
-function filtrar(categoria) {
-    let produtos = document.querySelectorAll(".product");
-    produtos.forEach(p => {
-        if(categoria === "todos" || p.dataset.categoria === categoria){
-            p.style.display = "block";
-        } else {
-            p.style.display = "none";
-        }
-    });
-}
-
-// CARRINHO
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function addCart(nome, preco) {
-    cart.push({nome, preco});
-    localStorage.setItem("cart", JSON.stringify(cart));
-    mostrarCart();
-}
-
-function mostrarCart() {
-    let cartItems = document.getElementById("cart-items");
-    cartItems.innerHTML = "";
-    cart.forEach((item, i) => {
-        let div = document.createElement("div");
-        div.className = "cart-item";
-        div.innerHTML = `${item.nome} - R$ ${item.preco.toFixed(2)} <button onclick="remover(${i})">X</button>`;
-        cartItems.appendChild(div);
-    });
-}
-
-function remover(index) {
-    cart.splice(index,1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    mostrarCart();
-}
-
-function finalizarCompra() {
-    if(cart.length === 0) { alert("Carrinho vazio!"); return; }
-    alert("Compra finalizada! Total: R$ " + cart.reduce((a,b)=>a+b.preco,0).toFixed(2));
-    cart = [];
-    localStorage.removeItem("cart");
-    mostrarCart();
-}
-
-// Inicialização
 mostrarUsuario();
-mostrarCart();
 </script>
 
 </body>
