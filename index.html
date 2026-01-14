@@ -7,12 +7,11 @@
 
 <style>
 :root {
-    --primary: #0a3d91;
-    --accent: #1a73e8;
-    --bg: #f6f9ff;
-    --card: #ffffff;
-    --text: #222;
-    --muted: #666;
+    --primary: #1a73e8;
+    --bg-dark: rgba(0,0,0,0.55);
+    --card: rgba(255,255,255,0.95);
+    --text: #fff;
+    --muted: #d0d0d0;
     --radius: 18px;
 }
 
@@ -21,8 +20,33 @@
 body {
     margin: 0;
     font-family: Inter, "Segoe UI", Arial, sans-serif;
-    background: var(--bg);
     color: var(--text);
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+.video-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+}
+
+.video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0.4)
+    );
+    z-index: -1;
 }
 
 /* LAYOUT */
@@ -35,12 +59,12 @@ body {
 /* SIDEBAR */
 .sidebar {
     padding: 28px 22px;
-    background: linear-gradient(180deg, #0a3d91, #082f6e);
-    color: white;
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.4);
 }
 
 .logo {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     margin-bottom: 30px;
 }
@@ -51,7 +75,7 @@ body {
     margin-bottom: 12px;
     border: none;
     border-radius: var(--radius);
-    background: rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.15);
     color: white;
     font-size: 15px;
     cursor: pointer;
@@ -59,63 +83,63 @@ body {
 }
 
 .nav button:hover {
-    background: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.3);
     transform: translateY(-2px);
 }
 
 /* MAIN */
 .main {
-    padding: 32px;
+    padding: 36px;
 }
 
 /* HEADER */
 .header h1 {
+    font-size: 36px;
     margin: 0;
-    font-size: 30px;
 }
 
 .header p {
-    margin-top: 6px;
     color: var(--muted);
+    max-width: 520px;
 }
 
 /* GOALS */
 .goals {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-    gap: 16px;
-    margin: 30px 0;
+    gap: 18px;
+    margin: 36px 0;
 }
 
 .goal {
-    background: var(--card);
-    border-radius: var(--radius);
     padding: 22px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    border-radius: var(--radius);
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
     cursor: pointer;
     transition: .3s;
 }
 
 .goal:hover {
     transform: translateY(-6px);
-    box-shadow: 0 18px 40px rgba(0,0,0,.12);
+    background: rgba(255,255,255,0.22);
 }
 
-/* RESULT */
+/* RESULT CARD */
 #resultado {
     background: var(--card);
+    color: #222;
     border-radius: var(--radius);
-    padding: 28px;
-    box-shadow: 0 14px 40px rgba(0,0,0,.1);
+    padding: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
 }
 
-/* SECTION */
 .section {
-    margin-bottom: 26px;
+    margin-bottom: 24px;
 }
 
 .section h3 {
-    color: var(--primary);
+    color: #1a73e8;
     margin-bottom: 10px;
 }
 
@@ -123,26 +147,13 @@ body {
     padding-left: 18px;
 }
 
-.section li {
-    margin-bottom: 6px;
-}
-
 /* NEWSLETTER */
 .newsletter {
-    margin-top: 40px;
-    padding: 30px;
+    margin-top: 50px;
+    padding: 34px;
     border-radius: var(--radius);
     background: linear-gradient(135deg, #1a73e8, #0a3d91);
-    color: white;
-    box-shadow: 0 20px 50px rgba(0,0,0,.2);
-}
-
-.newsletter h2 {
-    margin-top: 0;
-}
-
-.newsletter p {
-    opacity: .9;
+    box-shadow: 0 25px 60px rgba(0,0,0,.4);
 }
 
 .newsletter input {
@@ -151,17 +162,15 @@ body {
     border-radius: 12px;
     border: none;
     margin: 12px 0;
-    font-size: 15px;
 }
 
 .newsletter button {
-    padding: 14px;
     width: 100%;
-    border: none;
+    padding: 14px;
     border-radius: 12px;
+    border: none;
     background: white;
     color: #0a3d91;
-    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -169,9 +178,9 @@ body {
 /* FOOTER */
 .footer {
     margin-top: 40px;
-    font-size: 14px;
-    color: var(--muted);
     text-align: center;
+    color: var(--muted);
+    font-size: 14px;
 }
 
 /* MOBILE */
@@ -183,6 +192,15 @@ body {
 </head>
 
 <body>
+
+<!-- VIDEO BACKGROUND -->
+<div class="video-bg">
+    <video autoplay muted loop playsinline>
+        <source src="https://cdn.coverr.co/videos/coverr-man-running-on-a-treadmill-6077/1080p.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="overlay"></div>
 
 <div class="app">
 
@@ -201,8 +219,8 @@ body {
 <main class="main">
 
 <div class="header">
-    <h1>Treinos, Performance & Hábitos</h1>
-    <p>Conteúdo inteligente para quem quer evoluir de verdade.</p>
+    <h1>Movimento. Consistência. Evolução.</h1>
+    <p>Treinos, suplementos, hábitos e flows inteligentes para transformar seu corpo e mente.</p>
 </div>
 
 <div class="goals">
@@ -213,14 +231,13 @@ body {
 </div>
 
 <div id="resultado">
-    <p>Selecione um objetivo para gerar seu plano.</p>
+    <p>Escolha um objetivo para gerar seu plano personalizado.</p>
 </div>
 
-<!-- NEWSLETTER -->
 <div class="newsletter">
-    <h2>📩 Quer receber dicas exclusivas?</h2>
-    <p>Treinos, hábitos, suplementos e flows direto no seu e-mail.</p>
-    <input type="email" id="email" placeholder="Digite seu melhor e-mail">
+    <h2>📩 Receber dicas no e-mail?</h2>
+    <p>Conteúdos práticos de treino, saúde e performance — sem spam.</p>
+    <input type="email" id="email" placeholder="Seu melhor e-mail">
     <button onclick="inscrever()">Quero receber</button>
     <p id="msg"></p>
 </div>
@@ -237,32 +254,32 @@ const fitflow = {
     hipertrofia: {
         treinos: ["Push / Pull / Legs", "Upper / Lower", "Drop sets", "Rest-pause"],
         suplementos: ["Whey", "Creatina", "BCAA", "Glutamina"],
-        dicas: ["Sobrecarga progressiva", "Volume adequado", "Sono profundo"],
+        dicas: ["Sobrecarga progressiva", "Volume certo", "Sono profundo"],
         flow: ["Seg: Push", "Ter: Pull", "Qua: Legs", "Qui: Upper", "Sex: Lower"]
     },
     emagrecimento: {
-        treinos: ["HIIT", "Funcional", "Circuito metabólico", "Cardio LISS"],
+        treinos: ["HIIT", "Funcional", "Circuito", "Cardio LISS"],
         suplementos: ["Cafeína", "L-Carnitina", "Chá Verde"],
-        dicas: ["Déficit calórico", "Alta proteína", "Passos diários"],
-        flow: ["Seg: HIIT", "Ter: Funcional", "Qua: Cardio", "Qui: Circuito", "Sex: Caminhada"]
+        dicas: ["Déficit calórico", "Passos diários", "Consistência"],
+        flow: ["Seg: HIIT", "Ter: Funcional", "Qua: Cardio", "Qui: Circuito"]
     },
     forca: {
         treinos: ["Agachamento", "Supino", "Terra", "Militar"],
         suplementos: ["Creatina", "Beta-Alanina"],
         dicas: ["Poucas reps", "Descanso longo", "Execução perfeita"],
-        flow: ["Seg: Agacho", "Ter: Supino", "Qui: Terra", "Sex: Militar"]
+        flow: ["Seg: Agacho", "Ter: Supino", "Qui: Terra"]
     },
     lifestyle: {
-        treinos: ["Mobilidade", "Alongamento ativo", "Yoga", "Caminhada"],
+        treinos: ["Mobilidade", "Yoga", "Caminhada"],
         suplementos: ["Magnésio", "Ômega 3", "Vitamina D"],
-        dicas: ["Hidratação", "Gestão do estresse", "Rotina consistente"],
-        flow: ["Diário: Mobilidade", "3x semana: Caminhada", "1x Yoga"]
+        dicas: ["Hidratação", "Sono regular", "Gestão do estresse"],
+        flow: ["Diário: Mobilidade", "3x Caminhada", "1x Yoga"]
     }
 };
 
 function sugerir(tipo) {
     const d = fitflow[tipo];
-    document.getElementById("resultado").innerHTML = `
+    resultado.innerHTML = `
         <div class="section"><h3>🏋️ Treinos</h3><ul>${d.treinos.map(i=>`<li>${i}</li>`).join("")}</ul></div>
         <div class="section"><h3>💊 Suplementos</h3><ul>${d.suplementos.map(i=>`<li>${i}</li>`).join("")}</ul></div>
         <div class="section"><h3>🧠 Dicas</h3><ul>${d.dicas.map(i=>`<li>${i}</li>`).join("")}</ul></div>
@@ -271,13 +288,12 @@ function sugerir(tipo) {
 }
 
 function inscrever() {
-    const email = document.getElementById("email").value;
-    if (!email) {
+    if (!email.value) {
         msg.innerText = "Digite um e-mail válido.";
         return;
     }
-    msg.innerText = "✅ Inscrição realizada! Em breve você receberá conteúdos.";
-    document.getElementById("email").value = "";
+    msg.innerText = "✅ Inscrição confirmada! Em breve você receberá conteúdos.";
+    email.value = "";
 }
 </script>
 
