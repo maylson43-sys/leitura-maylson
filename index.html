@@ -16,9 +16,7 @@
     --radius: 18px;
 }
 
-* {
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -53,15 +51,15 @@ body {
     margin-bottom: 12px;
     border: none;
     border-radius: var(--radius);
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.14);
     color: white;
     font-size: 15px;
     cursor: pointer;
-    transition: background .2s, transform .2s;
+    transition: .25s;
 }
 
 .nav button:hover {
-    background: rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.25);
     transform: translateY(-2px);
 }
 
@@ -73,7 +71,7 @@ body {
 /* HEADER */
 .header h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 30px;
 }
 
 .header p {
@@ -84,61 +82,88 @@ body {
 /* GOALS */
 .goals {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
     gap: 16px;
-    margin: 28px 0;
+    margin: 30px 0;
 }
 
 .goal {
     background: var(--card);
     border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
     cursor: pointer;
-    transition: transform .25s, box-shadow .25s;
+    transition: .3s;
 }
 
 .goal:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-}
-
-.goal h3 {
-    margin: 0;
-    font-size: 18px;
-}
-
-.goal span {
-    display: block;
-    margin-top: 6px;
-    color: var(--muted);
-    font-size: 14px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.12);
 }
 
 /* RESULT */
 #resultado {
     background: var(--card);
     border-radius: var(--radius);
-    padding: 26px;
-    box-shadow: 0 14px 40px rgba(0,0,0,0.1);
+    padding: 28px;
+    box-shadow: 0 14px 40px rgba(0,0,0,.1);
 }
 
+/* SECTION */
 .section {
-    margin-bottom: 24px;
+    margin-bottom: 26px;
 }
 
 .section h3 {
-    margin-bottom: 10px;
     color: var(--primary);
+    margin-bottom: 10px;
 }
 
 .section ul {
     padding-left: 18px;
-    margin: 0;
 }
 
 .section li {
     margin-bottom: 6px;
+}
+
+/* NEWSLETTER */
+.newsletter {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #1a73e8, #0a3d91);
+    color: white;
+    box-shadow: 0 20px 50px rgba(0,0,0,.2);
+}
+
+.newsletter h2 {
+    margin-top: 0;
+}
+
+.newsletter p {
+    opacity: .9;
+}
+
+.newsletter input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    margin: 12px 0;
+    font-size: 15px;
+}
+
+.newsletter button {
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    color: #0a3d91;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /* FOOTER */
@@ -151,12 +176,8 @@ body {
 
 /* MOBILE */
 @media (max-width: 900px) {
-    .app {
-        grid-template-columns: 1fr;
-    }
-    .sidebar {
-        display: none;
-    }
+    .app { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
 }
 </style>
 </head>
@@ -172,6 +193,7 @@ body {
         <button onclick="sugerir('hipertrofia')">🏋️ Hipertrofia</button>
         <button onclick="sugerir('emagrecimento')">🔥 Emagrecimento</button>
         <button onclick="sugerir('forca')">💪 Força</button>
+        <button onclick="sugerir('lifestyle')">🧘 Lifestyle</button>
     </div>
 </aside>
 
@@ -179,27 +201,28 @@ body {
 <main class="main">
 
 <div class="header">
-    <h1>Treinos & Performance</h1>
-    <p>Rotinas inteligentes, suplementos e flows semanais.</p>
+    <h1>Treinos, Performance & Hábitos</h1>
+    <p>Conteúdo inteligente para quem quer evoluir de verdade.</p>
 </div>
 
 <div class="goals">
-    <div class="goal" onclick="sugerir('hipertrofia')">
-        <h3>🏋️ Hipertrofia</h3>
-        <span>Ganhar massa muscular</span>
-    </div>
-    <div class="goal" onclick="sugerir('emagrecimento')">
-        <h3>🔥 Emagrecimento</h3>
-        <span>Queimar gordura</span>
-    </div>
-    <div class="goal" onclick="sugerir('forca')">
-        <h3>💪 Força</h3>
-        <span>Aumentar carga e potência</span>
-    </div>
+    <div class="goal" onclick="sugerir('hipertrofia')">🏋️ Hipertrofia</div>
+    <div class="goal" onclick="sugerir('emagrecimento')">🔥 Emagrecimento</div>
+    <div class="goal" onclick="sugerir('forca')">💪 Força</div>
+    <div class="goal" onclick="sugerir('lifestyle')">🧘 Lifestyle</div>
 </div>
 
 <div id="resultado">
-    <p>Selecione um objetivo para visualizar seu plano.</p>
+    <p>Selecione um objetivo para gerar seu plano.</p>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+    <h2>📩 Quer receber dicas exclusivas?</h2>
+    <p>Treinos, hábitos, suplementos e flows direto no seu e-mail.</p>
+    <input type="email" id="email" placeholder="Digite seu melhor e-mail">
+    <button onclick="inscrever()">Quero receber</button>
+    <p id="msg"></p>
 </div>
 
 <div class="footer">
@@ -212,53 +235,49 @@ body {
 <script>
 const fitflow = {
     hipertrofia: {
-        titulo: "Hipertrofia",
-        treinos: ["Peito + Tríceps", "Costas + Bíceps", "Pernas", "Ombros + Abdômen"],
-        suplementos: ["Whey Protein", "Creatina", "BCAA"],
-        dicas: ["Sobrecarga progressiva", "Descanso adequado", "Sono de qualidade"],
-        flow: ["Seg: Peito", "Ter: Costas", "Qua: Pernas", "Qui: Ombros", "Sex: Abdômen"]
+        treinos: ["Push / Pull / Legs", "Upper / Lower", "Drop sets", "Rest-pause"],
+        suplementos: ["Whey", "Creatina", "BCAA", "Glutamina"],
+        dicas: ["Sobrecarga progressiva", "Volume adequado", "Sono profundo"],
+        flow: ["Seg: Push", "Ter: Pull", "Qua: Legs", "Qui: Upper", "Sex: Lower"]
     },
     emagrecimento: {
-        titulo: "Emagrecimento",
-        treinos: ["HIIT", "Funcional", "Circuito", "Cardio"],
+        treinos: ["HIIT", "Funcional", "Circuito metabólico", "Cardio LISS"],
         suplementos: ["Cafeína", "L-Carnitina", "Chá Verde"],
-        dicas: ["Déficit calórico", "Consistência", "Hidratação"],
+        dicas: ["Déficit calórico", "Alta proteína", "Passos diários"],
         flow: ["Seg: HIIT", "Ter: Funcional", "Qua: Cardio", "Qui: Circuito", "Sex: Caminhada"]
     },
     forca: {
-        titulo: "Força",
         treinos: ["Agachamento", "Supino", "Terra", "Militar"],
-        suplementos: ["Creatina", "Beta-Alanina", "Whey"],
+        suplementos: ["Creatina", "Beta-Alanina"],
         dicas: ["Poucas reps", "Descanso longo", "Execução perfeita"],
-        flow: ["Seg: Agacho", "Ter: Supino", "Qua: Descanso", "Qui: Terra", "Sex: Militar"]
+        flow: ["Seg: Agacho", "Ter: Supino", "Qui: Terra", "Sex: Militar"]
+    },
+    lifestyle: {
+        treinos: ["Mobilidade", "Alongamento ativo", "Yoga", "Caminhada"],
+        suplementos: ["Magnésio", "Ômega 3", "Vitamina D"],
+        dicas: ["Hidratação", "Gestão do estresse", "Rotina consistente"],
+        flow: ["Diário: Mobilidade", "3x semana: Caminhada", "1x Yoga"]
     }
 };
 
-function sugerir(obj) {
-    const d = fitflow[obj];
+function sugerir(tipo) {
+    const d = fitflow[tipo];
     document.getElementById("resultado").innerHTML = `
-        <h2>🔥 ${d.titulo}</h2>
-
-        <div class="section">
-            <h3>🏋️ Treinos</h3>
-            <ul>${d.treinos.map(t => `<li>${t}</li>`).join("")}</ul>
-        </div>
-
-        <div class="section">
-            <h3>💊 Suplementos</h3>
-            <ul>${d.suplementos.map(s => `<li>${s}</li>`).join("")}</ul>
-        </div>
-
-        <div class="section">
-            <h3>🧠 Dicas</h3>
-            <ul>${d.dicas.map(d => `<li>${d}</li>`).join("")}</ul>
-        </div>
-
-        <div class="section">
-            <h3>🔁 Flow Semanal</h3>
-            <ul>${d.flow.map(f => `<li>${f}</li>`).join("")}</ul>
-        </div>
+        <div class="section"><h3>🏋️ Treinos</h3><ul>${d.treinos.map(i=>`<li>${i}</li>`).join("")}</ul></div>
+        <div class="section"><h3>💊 Suplementos</h3><ul>${d.suplementos.map(i=>`<li>${i}</li>`).join("")}</ul></div>
+        <div class="section"><h3>🧠 Dicas</h3><ul>${d.dicas.map(i=>`<li>${i}</li>`).join("")}</ul></div>
+        <div class="section"><h3>🔁 Flow</h3><ul>${d.flow.map(i=>`<li>${i}</li>`).join("")}</ul></div>
     `;
+}
+
+function inscrever() {
+    const email = document.getElementById("email").value;
+    if (!email) {
+        msg.innerText = "Digite um e-mail válido.";
+        return;
+    }
+    msg.innerText = "✅ Inscrição realizada! Em breve você receberá conteúdos.";
+    document.getElementById("email").value = "";
 }
 </script>
 
